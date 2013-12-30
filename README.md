@@ -17,6 +17,7 @@ This theme comes with a few customization options, which you can access in the "
 * Custom about background color
 * Enable/disable tags
 * Enable/disable content sources
+* Add your social media accounts (Twitter, Instagram, Pinterest, Facebook, Flickr)
 
 ##Support
 Have any questions? Or suggestions on how to improve the theme? Shoot me an email at ramos.alisha@gmail.com
