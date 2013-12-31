@@ -19,6 +19,9 @@
 	<!-- Google Web Font: Cardo in 400, 700 -->
 	<link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
 	
+	<!-- Font Awesome icons -->
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	
 	<!-- DEFAULT & CUSTOMIZABLE VALUES -->
         {block:Description}
             <meta name="description" content="{MetaDescription}" />
@@ -28,10 +31,14 @@
 	 <meta name="if:Show Avatar in About" content="1"/>
 	 <meta name="if:Show Tags" content="0"/>
 	 <meta name="if:Show Reblog Source" content="0"/>
+	 <meta name="text:Twitter Username" content=""/>
+	 <meta name="text:Instagram Username" content=""/>
+	 <meta name="text:Pinterest Username" content=""/>
+	 <meta name="text:Facebook URL" content=""/>
+	 <meta name="text:Flickr URL" content=""/>
 	 
 	 
-	<style type="text/css">
-	
+	<style type="text/css">	
 	/*----------------------
 	
 	Body
@@ -158,6 +165,24 @@
         margin-right: 2em;
     }
     
+    .about ul.social-media {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .about ul.social-media li {
+        display: inline-block;
+        margin-right: 1em !important;
+    }
+    
+    .about ul.social-media li:last-child {
+        margin-right: 0;
+    }
+    
+    .about a:hover li {
+        opacity: 0.8;
+    }
+    
     .content {
         transition: 0.4s ease-in-out;
     }
@@ -223,14 +248,31 @@
 	}
 	
 	.full-notes {
-	    padding: 1em 0;
+	    padding: 2em 0;
 	    font-size: 0.9em;
 	    float: left;
 	}
 	
+	.full-notes ol {
+	    list-style-type: none;
+	    padding: 0;
+	}
+	
+	.full-notes ol li {
+	    padding: 0.3em 0;
+	}
+	
+	.full-notes ol li .action {
+	    margin-left: 0.5em;
+	}
+
 	.more_notes_link, .pagination a {
 	    padding: 0.5em;
-	    background-color: #717171;
+	    font-size: 1rem;
+	}
+	
+	.tags {
+	    text-transform: lowercase;
 	}
 	
 	.pagination {
@@ -337,6 +379,47 @@
 	    background-color: #e6e6e6;
 	}
 	
+	/* ANSWER POSTS */
+	.asker-portrait {
+	    float: left;
+	    margin-right: 1em;
+	}
+	
+	.asker, .asker a {
+	    font-size: 0.85rem;
+	    color: rgba(52,52,52,0.7);
+	}
+	
+	.question-block {
+	    float: left;
+	    background-color: #e6e6e6;
+	    padding: 1em;
+	    margin: 0 0 1.5em 1em;
+	    position: relative;
+	    width: 70%;
+	}
+	
+	.question-block:before {
+	    content: '';
+	    width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 10px 15px 10px 0;
+        border-color: transparent #e6e6e6 transparent transparent;
+        position: absolute;
+	    top: 12%;
+	    left: -3%;
+	}
+	
+	.question {
+	    margin-top: 1em;
+	}
+	
+	.answer {
+	    clear: both;
+	    
+	}
+	
 	/*----------------------
 	
 	Footer
@@ -381,13 +464,17 @@
 	    <div class="container">
     	    {block:Description}
                  <p class="description" id="desc">{block:IfShowAvatarinAbout}<img class="about-avatar" src={PortraitURL-96} />{/block:IfShowAvatarinAbout}{Description}</p>
+                 <ul class="social-media">
+                      {block:IfTwitterUsername}<a href="http://twitter.com/{text:Twitter Username}"><li><i class="fa fa-twitter fa-lg"></i></li></a>{/block:IfTwitterUsername}
+                     {block:IfInstagramUsername}<a href="http://instagram.com/{text:Instagram Username}"><li><i class="fa fa-instagram fa-lg"></i></li></a>{/block:IfInstagramUsername}
+                     {block:IfPinterestUsername}<a href="http://pinterest.com/{text:Pinterest Username}"><li><i class="fa fa-pinterest fa-lg"></i></li></a>{/block:IfPinterestUsername}
+                     {block:IfFacebookURL}<a href="{text:Facebook URL}"><li><i class="fa fa-facebook fa-lg"></i></li>{/block:IfFacebookURL}
+                    {block:IfFlickrURL} <a href="{text:Flickr URL}"><li><i class="fa fa-flickr fa-lg"></i></li></a>{/block:IfFlickrURL}
+                 </ul>
              {/block:Description}
          </div>
 	</aside>
-	
-	
-	
-	
+		
 	<section class="content">
     <div class="container">
     
@@ -401,9 +488,7 @@
 
 		{block:Posts}
 		<article class="post">
-			
-			
-			
+					
 			<!-- TEXT POST -->
 			{block:Text}
     			<div class="text">
@@ -413,9 +498,6 @@
     				{Body}
     			</div>
 			{/block:Text}
-			
-			
-			
 			
 			<!-- QUOTE -->
 			{block:Quote}
@@ -430,10 +512,7 @@
                     {/block:Source}
     			</div>
 			{/block:Quote}
-			
-			
-			
-			
+	
 			<!-- LINK POST -->
 			{block:Link}
 			<div class="link">
@@ -441,10 +520,7 @@
 				{block:Description}<div class="link-caption">{Description}</div>{/block:Description}
 			</div>
 			{/block:Link}
-			
-	
-	
-			
+
 			<!-- VIDEO POST -->
 			{block:Video}
 			<div class="video">
@@ -452,9 +528,7 @@
 				{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 			</div>
 			{/block:Video}
-			
-			
-			
+
 			<!-- AUDIO POST -->
 			<div class="audio">
 			{block:AudioPlayer}
@@ -466,8 +540,7 @@
 				{block:PlayCount}<div class="playcount">{PlayCountWithLabel}</div> {/block:PlayCount}
 				{/block:AudioPlayer}
 			</div>
-			
-			
+	
 			<!-- PHOTO POST -->
 			{block:Photo}
 		        <div class="photo">
@@ -506,7 +579,6 @@
 			</div>
 			{/block:Panorama}
 
-
             <!-- CHAT POST -->
 			{block:Chat}
 			<div class="chat">
@@ -524,20 +596,26 @@
 			
 			<!-- ANSWER POST -->
 			{block:Answer}
-			<div class="answer">
-				<img src="{AskerPortraitURL-40}">
-				{Asker}
-				{Question}
-				{Answer}
+			<div class="answer-post">
+			    <div class="asker-portrait">
+			        <img src="{AskerPortraitURL-40}">
+			    </div>
+			    <div class="arrow"></div>
+			    <div class="question-block clearfix">
+			        <div class="asker">{Asker} asked:</div>
+			    	<div class="question">{Question}</div>
+				</div>
+				<div class="answer">
+			    	{Answer}
+			    </div>
 			</div>
 			{/block:Answer}
-			
-			
+					
 			<!-- SOURCES -->
 			{block:ifShowReblogSource}
 			{block:RebloggedFrom} 
 				<div class="caption">
-			    	(via <a href="{ReblogParentURL}">{ReblogParentName}</a>, by <a href="{ReblogRootURL}">{ReblogRootName})</a>
+			    	<p>(via <a href="{ReblogParentURL}">{ReblogParentName}</a>, by <a href="{ReblogRootURL}">{ReblogRootName})</a></p>
 			    </div>
 				{/block:RebloggedFrom}
 				<div class="sources">
@@ -565,7 +643,7 @@
                         <a href="{TagURL}">#{Tag}</a>&nbsp;
                         {/block:Tags}
                     </span>
-                {/block:HasTags}{/block:ifshowTags}
+                {/block:HasTags}{/block:ifShowTags}
     		</div>
     		
     		<!-- NOTE COUNT -->
@@ -588,12 +666,6 @@
 		
 		<div class="divider-article"></div>
 		{/block:Posts}<!-- / END POSTS -->
-		
-		
-		
-		
-		
-		
 
 		{block:PermalinkPagination}
 		<div class="pagination">
