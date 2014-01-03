@@ -1,5 +1,9 @@
 #Gentlewoman Tumblr theme
-**[Gentlewoman](http://gentlewoman-theme.tumblr.com)** is a minimal, elegant, functional theme for the discerning eye. Gentlewoman gives your content space to breathe while focusing on great typography to let any longform posts shine.
+[Gentlewoman](http://gentlewoman-theme.tumblr.com) is a minimal, elegant, functional theme for the discerning eye. Gentlewoman gives your content space to breathe while focusing on great typography to let any longform posts shine.
+
+**IMPORTANT NOTE:** This theme is in beta and is currently still being QA'd. This means if you use the theme as-is, you may experience some bugs and unsightly code. It should be released officially in early January.
+
+**LAST UPDATED:** January 2, 2013
 
 ##How to Install
 1. View index.html on this GitHub repo
