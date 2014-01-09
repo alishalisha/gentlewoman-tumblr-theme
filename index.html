@@ -238,10 +238,6 @@
 	    color: #343434;
 	}
 	
-	.caption {
-	    font-size: 0.8em;
-	}
-	
 	.sources {
 	    display: none;
 	}
@@ -575,15 +571,9 @@
 			
 			{block:Photoset}
 			<div class="photoset">
-				{block:Photos}
-					<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-					{block:Caption}
-					    <div class="caption">{Caption}</div>
-					{/block:Caption}
-			    {/block:Photos}
-			    
+				{Photoset}
 				{block:Caption}
-				    <div class="caption">{Caption}</div>
+					<div class="caption">{Caption}</div>
 				{/block:Caption}
 			</div>
 			{/block:Photoset}
