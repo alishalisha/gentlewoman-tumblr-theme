@@ -36,10 +36,8 @@
 	 <meta name="text:Pinterest Username" content=""/>
 	 <meta name="text:Facebook URL" content=""/>
 	 <meta name="text:Flickr URL" content=""/>
-	 
-	 
-	<style type="text/css">
 	
+	<style type="text/css">
 	/*----------------------
 	
 	Body
@@ -228,7 +226,7 @@
 	    float: left;
 	}
 	
-	.notes {
+	.notes-count {
 	    float: right;
 	}
 	
@@ -240,14 +238,20 @@
 	    color: #343434;
 	}
 	
+	.caption {
+	    font-size: 0.8em;
+	}
+	
 	.sources {
 	    display: none;
 	}
 	
 	.full-notes {
 	    padding: 2em 0;
-	    font-size: 0.9em;
 	    float: left;
+	    width: 100%;
+    	font-size: 1.1em;
+    	color: #343434;
 	}
 	
 	.full-notes ol {
@@ -256,7 +260,7 @@
 	}
 	
 	.full-notes ol li {
-	    padding: 0.3em 0;
+	    padding: 0.4em 0;
 	}
 	
 	.full-notes ol li .action {
@@ -266,6 +270,14 @@
 	.more_notes_link, .pagination a {
 	    padding: 0.5em;
 	    font-size: 1rem;
+	}
+	
+	li.note {
+	    text-transform: lowercase;
+	}
+	
+	li.note a {
+	    font-weight: bold;
 	}
 	
 	.avatar {
@@ -456,13 +468,10 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-
-
 	<header class="header">
 	    <div class="container">
 	    	<h1><a href="/">{Title}</a></h1>
-	    	<div class="divider divider-white"></div>
-        
+	    	<div class="divider divider-white"></div>   
 		<nav class="nav">
 		    <ul>
 		    <li><a id="about">About</a></li>
@@ -488,12 +497,8 @@
          </div>
 	</aside>
 	
-	
-	
-	
-	<section class="content">
+	<section class="content"> 
     <div class="container">
-    
 		{block:SearchPage}
 		<div class="result">
 			<p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
@@ -501,12 +506,9 @@
 		</div>
 		{/block:SearchPage}
 		{block:TagPage}<div class="result"><p>{lang:TagResultCount posts tagged Tag 3}</p></div>{/block:TagPage}
-
 		{block:Posts}
-		<article class="post">
-			
-			
-			
+		
+		<article class="post">		
 			<!-- TEXT POST -->
 			{block:Text}
     			<div class="text">
@@ -516,10 +518,7 @@
     				{Body}
     			</div>
 			{/block:Text}
-			
-			
-			
-			
+				
 			<!-- QUOTE -->
 			{block:Quote}
     			<div class="quote">
@@ -533,10 +532,7 @@
                     {/block:Source}
     			</div>
 			{/block:Quote}
-			
-			
-			
-			
+					
 			<!-- LINK POST -->
 			{block:Link}
 			<div class="link">
@@ -545,9 +541,6 @@
 			</div>
 			{/block:Link}
 			
-	
-	
-			
 			<!-- VIDEO POST -->
 			{block:Video}
 			<div class="video">
@@ -555,8 +548,6 @@
 				{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 			</div>
 			{/block:Video}
-			
-			
 			
 			<!-- AUDIO POST -->
 			<div class="audio">
@@ -569,8 +560,7 @@
 				{block:PlayCount}<div class="playcount">{PlayCountWithLabel}</div> {/block:PlayCount}
 				{/block:AudioPlayer}
 			</div>
-			
-			
+		
 			<!-- PHOTO POST -->
 			{block:Photo}
 		        <div class="photo">
@@ -609,7 +599,6 @@
 			</div>
 			{/block:Panorama}
 
-
             <!-- CHAT POST -->
 			{block:Chat}
 			<div class="chat">
@@ -640,8 +629,7 @@
 			    	{Answer}
 			    </div>
 			</div>
-			{/block:Answer}
-			
+			{/block:Answer}			
 			
 			<!-- SOURCES -->
 			{block:ifShowReblogSource}
@@ -656,7 +644,7 @@
 				{/block:ContentSource}
 				</div>
 			{/block:ifShowReblogSource}
-			
+
 			<div class="meta clearfix">
 			<!-- DATE -->
 			<div class="date">
@@ -679,7 +667,7 @@
     		</div>
     		
     		<!-- NOTE COUNT -->
-    		<div class="notes">
+    		<div class="notes-count">
         	<p>	<a href="{Permalink}">
         			{block:NoteCount} 
         			    {NoteCountWithLabel}
@@ -699,12 +687,6 @@
 		<div class="divider-article"></div>
 		{/block:Posts}<!-- / END POSTS -->
 		
-		
-		
-		
-		
-		
-
 		{block:PermalinkPagination}
 		<div class="pagination">
 			{block:PreviousPost}<a class="prev"href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
